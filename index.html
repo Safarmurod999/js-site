@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safarmurod O'rinov</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="scss/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar fixed-top bg-white">
+        <div class="container">
+          <a href="index.html"><div class="logo">
+            <img class="d-none d-lg-block" src="images/logo.png" alt="..." />
+            <img class="d-block d-lg-none" src="images/logo-2.png" alt="..." />
+          </div></a>
+          <div class="d-flex flex-row flex-grow-1 justify-content-evenly">
+            <button
+              class="catalog d-none d-md-flex"
+              onclick="display()"
+              href="#"
+            >
+              <img src="images/menu.png" alt="..." /><span
+                class="d-none d-xl-block"
+                >Каталог</span
+              >
+            </button>
+            <div class="search-inner position-relative">
+              <input class="searcher" type="search" placeholder="Найти товар" />
+              <img
+                class="position-absolute"
+                src="images/search.png"
+                alt="..."
+              />
+            </div>
+          </div>
+          <div class="nav-menus" id="navbar-responsive">
+            <ul class="nav-list">
+              <li>
+                <a href="#"><img src="images/heart-icon.png" alt="..." /></a>
+              </li>
+              <li>
+                <a href="#"><img src="images/box-icon.png" alt="..." /></a>
+              </li>
+              <li>
+                <a href="#"><img src="images/cart-icon.png" alt="..." /></a>
+              </li>
+              <li>
+                <a
+                  class="nav-link"
+                  href="#" onclick="openModal()"
+                >
+                  <img
+                    class="d-none d-xl-block"
+                    src="images/user.png"
+                    alt="..."
+                  />
+                  <img
+                    class="d-block d-xl-none"
+                    src="images/avatar-icon.png"
+                    alt="..."
+                  />
+                </a>
+               
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <nav id="navbar-catalog" class="navbar">
+        <div class="container">
+          <div class="catalog-box">
+            <div class="row">
+              <div class="col-3">
+                <a href="catalog.html">Молоко, сыр, яйцо</a>
+                <a href="catalog.html">Хлеб</a>
+                <a href="catalog.html">Фрукты и овощи</a>
+                <a href="catalog.html">Замороженные продукты</a>
+              </div>
+              <div class="col-3">
+                <a href="catalog.html">Напитки</a>
+                <a href="catalog.html">Кондитерские изделия</a>
+                <a href="catalog.html">Чай, кофе</a>
+              </div>
+              <div class="col-3">
+                <a href="catalog.html">Бакалея</a>
+                <a href="catalog.html">Здоровое питание</a>
+                <a href="catalog.html">Зоотовары</a>
+              </div>
+              <div class="col-3">
+                <a href="catalog.html">Непродовольственные товары</a>
+                <a href="catalog.html">Детское питание</a>
+                <a href="catalog.html">Мясо, птица, колбаса</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div id="modalLogin" class="modal">
+        <div class="modal-inner">
+          <form action="index.html">
+            <button class="closer" onclick="closeModal()"><img src="images/close.svg" alt="..."></button>
+          <h3>Вход</h3>
+          <label for="number">Телефон</label>
+          <input type="text" name="number" id="numInput" required>
+          <input type="button" value="Вход" onclick="checkInput()">
+          <div><a href="#">Регистрация</a><a href="#">Забыли пароль?</a></div>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="nav-sm">
+          <a href="#" class="nav-sm-link"
+            ><img src="images/nav-icon-1.png" alt="..."
+          /></a>
+          <a href="#" class="nav-sm-link"
+            ><img src="images/heart-icon.png" alt="..."
+          /></a>
+          <a href="#" class="nav-sm-link"
+            ><img src="images/box-icon.png" alt="..."
+          /></a>
+          <a href="#" class="nav-sm-link"
+            ><img src="images/cart-icon.png" alt="..."
+          /></a>
+          <a href="#" class="nav-sm-link"
+            ><img src="images/avatar-icon.png" alt="..."
+          /></a>
+        </div>
+      </div>
+      <section class="top">
+        <img class="w-100" src="images/sliders.png" alt="..." />
+      </section>
+      <section class="stock">
+
+        <div class="container">
+          <div class="alert alert-info results" role="alert"></div>
+          <div
+            class="stock-top d-flex flex-row justify-content-between px-2 mb-5"
+          >
+            <h1 class="stock-title">Акции</h1>
+            <a class="stock-link" href="#"
+              >Bce акции <img src="images/chevron-right.png" alt="..."
+            /></a>
+          </div>
+          <div id="stockRow" class="row"></div>
+        </div>
+      </section>
+      <section class="stock">
+        <div class="container">
+          <div
+            class="stock-top d-flex flex-row justify-content-between px-2 mb-5"
+          >
+            <h1 class="stock-title">Новинки</h1>
+            <a class="stock-link" href="#"
+              >Bce новинки<img src="images/chevron-right.png" alt="..."
+            /></a>
+          </div>
+          <div id="newRow" class="row"></div>
+        </div>
+      </section>
+      <section class="stock">
+        <div class="container">
+          <div
+            class="stock-top d-flex flex-row justify-content-between px-2 mb-5"
+          >
+            <h1 class="stock-title">Покупали раньше</h1>
+            <a class="stock-link" href="#"
+              >Bce покупки<img src="images/chevron-right.png" alt="..."
+            /></a>
+          </div>
+          <div id="prevRow" class="row"></div>
+        </div>
+      </section>
+      <section class="special">
+        <div class="container">
+          <div id="specRow" class="row"></div>
+        </div>
+      </section>
+      <section class="location">
+        <div class="container">
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active me-3 mt-3"
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+              >
+                п.Щельяюр
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link me-3 mt-3"
+                id="pills-profile-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+              >
+                д.Вертеп
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link me-3 mt-3"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+              >
+                с.Краснобор
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link me-3 mt-3"
+                id="pills-disabled-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-disabled"
+                type="button"
+                role="tab"
+                aria-controls="pills-disabled"
+                aria-selected="false"
+              >
+                д.Диюр
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-home"
+              role="tabpanel"
+              aria-labelledby="pills-home-tab"
+              tabindex="0"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13326.249405473238!2d53.4135229!3d65.32264149999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4472340bbf53f20d%3A0x6aaf90d406ef7886!2z0KnQtdC70YzRj9GO0YAsINCg0LXRgdC_LiDQmtC-0LzQuCwg0KDQvtGB0YHQuNGP!5e0!3m2!1sru!2s!4v1676284222994!5m2!1sru!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-profile"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab"
+              tabindex="0"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13339.060365717967!2d53.17753034075058!3d65.29733118422044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x447249e2718cd461%3A0x25c0f625da4e30ed!2z0JLQtdGA0YLQtdC_LCDQoNC10YHQvy4g0JrQvtC80LgsINCg0L7RgdGB0LjRjywgMTY5NDcz!5e0!3m2!1sru!2s!4v1676284450463!5m2!1sru!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-contact"
+              role="tabpanel"
+              aria-labelledby="pills-contact-tab"
+              tabindex="0"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13341.641799039!2d53.27239249073133!3d65.29223048406548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x447235dd2ca590b3%3A0xc633232da326cfaf!2z0JrRgNCw0YHQvdC-0LHQvtGALCDQoNC10YHQvy4g0JrQvtC80LgsINCg0L7RgdGB0LjRjywgMTY5NDcz!5e0!3m2!1sru!2s!4v1676284477119!5m2!1sru!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-disabled"
+              role="tabpanel"
+              aria-labelledby="pills-disabled-tab"
+              tabindex="0"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13350.05338385607!2d53.341141340668706!3d65.27560843356075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x447235aa69816fb7%3A0x7202220934f2d943!2z0JTQuNGO0YAsINCg0LXRgdC_LiDQmtC-0LzQuCwg0KDQvtGB0YHQuNGPLCAxNjk0NzE!5e0!3m2!1sru!2s!4v1676284503745!5m2!1sru!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="status">
+        <div class="container">
+          <div
+            class="stock-top d-flex flex-row justify-content-between px-2 mb-5"
+          >
+            <h1 class="stock-title">Статьи</h1>
+            <a class="stock-link" href="#"
+              >Bce статьи<img src="images/chevron-right.png" alt="..."
+            /></a>
+          </div>
+          <div id="statusRow" class="row"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 col-md-8 d-flex flex-row align-items-center justify-content-between"
+          >
+            <div class="footer__logo">
+              <img src="images/footer-logo.png" alt="..." />
+            </div>
+            <ul
+              class="footer__nav mb-0 d-flex flex-row align-items-center justify-content-center"
+            >
+              <li class="li"><a href="#">O компании</a></li>
+              <li class="li"><a href="#">Контакты</a></li>
+              <li class="li"><a href="#">Вакансии</a></li>
+              <li class="li"><a href="#">Статьи</a></li>
+              <li class="li">
+                <a href="#">Политика обработки персональных данных</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="col-6 col-md-4 d-flex flex-row align-items-center justify-content-between"
+          >
+            <div class="footer__icon w-100 mt-4 mt-lg-0">
+              <div class="row">
+                <div
+                  class="col-7 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <div class="row">
+                    <div class="col-12 col-sm-6">
+                      <div
+                        class="d-flex flex-row align-items-center justify-content-between"
+                      >
+                        <img src="images/instagram.png" alt="..." />
+                        <img src="images/vkontakte.png" alt="..." />
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <div
+                        class="d-flex flex-row align-items-center justify-content-between"
+                      >
+                        <img src="images/ok.png" alt="..." />
+                        <img src="images/facebook.png" alt="..." />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-5 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <img src="images/phone.png" alt="...." />
+                  <p class="mb-0">8 800 777 33 33</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/card.js"></script>
+    <script src="js/maincard.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
